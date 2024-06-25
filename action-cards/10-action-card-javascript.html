@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+NG+Modern:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Action Cards Example</title>
+    <style>
+      .open-sans-300 {
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+      .action-card {
+        display: none;
+        font-size: 2em;
+        width: 500px;
+        padding: 30px;
+        margin: 30px;
+        border: 3px dashed #666;
+        background-color: #c0f0f0;
+      }
+
+      .action-card .title {
+        font-size: 1.2em;
+        font-family: "Playwrite NG Modern", cursive;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .action-card .image {
+        text-align: right;
+      }
+
+      .action-card img {
+        width: 100px;
+        height: 100px;
+      }
+
+
+    </style>
+  </head>
+  <body class="open-sans-300">
+    <h1>Action Cards - Random Selection with Javascript</h1>
+    <p>This example introduces some Javascript that allows you to select a random 'action card'. While the code is commented, a separate Javascript tutorial will explain how the code works in detail. For now, just understand that Javascript can dynamically change or trigger different events on a page, including picking a random card.</p> 
+    <h4>Challenges/experiments/ideas:</h4>
+    <ul>
+      <li>You can style the buttons themselves!</li>
+      <li>What if you could have multiple 'sets' of cards -- 'action cards', 'resource cards', 'scenario cards', etc? </li>
+    </ul>
+
+    <div class="container">
+      <button id="pick-action-card">Pick Action Card</button>
+      <button id="hide-action-cards">Hide Action Card</button>
+
+      <div class="action-card" id="action-card-1">
+        <div class="title">ACTION CARD 1: Advance to Go</div>
+        <div class="explanation">Collect $200 as you pass GO.</div>
+      </div>
+
+      <div class="action-card" id="action-card-2">
+        <div class="title">ACTION CARD 2: Pay Hospital Fees</div>
+        <div class="explanation">Pay $100.</div>
+        <div class="image"><img src="images/hospital_icon.png" /></div>
+      </div>
+
+      <div class="action-card" id="action-card-3">
+        <div class="title">ACTION CARD 3: Get Out of Jail Free</div>
+        <div class="explanation">
+          This card may be kept until needed, or sold/traded.
+        </div>
+      </div>
+
+      <div class="action-card" id="action-card-4">
+        <div class="title">ACTION CARD 4: Bank Error in Your Favor</div>
+        <div class="explanation">Collect $200.</div>
+      </div>
+
+      <div class="action-card" id="action-card-5">
+        <div class="title">ACTION CARD 5: Go to Jail</div>
+        <div class="explanation">
+          Go directly to Jail. Do not pass GO, do not collect $200.
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      /* This is Javascript! */
+      /* This line is a comment, which means that it's not considered code */
+
+      /* Again, it's okay if you probably don't understand what exactly is happening, as long as you get a gist for what the intention of the code is! */
+
+
+      // when the 'pick-action-card' button is pressed....
+      document.getElementById("pick-action-card").addEventListener("click", function () {
+
+          
+          // get all the action cards by their class name
+          var actionCards = document.getElementsByClassName("action-card");
+
+          // pick a random number, given the total number of action cards existing
+          var randomIndex = Math.floor(Math.random() * actionCards.length);
+
+          // Hide all action cards first
+          Array.from(actionCards).forEach(function (card) {
+            card.style.display = "none";
+          });
+
+          // Show the randomly picked action card
+          actionCards[randomIndex].style.display = "block";
+        });
+
+      
+      // when the 'hide-action-card' button is pressed....
+      document.getElementById("hide-action-cards").addEventListener("click", function () {
+
+          // get all the action cards by their class name
+          var actionCards = document.getElementsByClassName("action-card");
+
+          // Hide all action cards
+          Array.from(actionCards).forEach(function (card) {
+            card.style.display = "none";
+          });
+
+        });
+    </script>
+  </body>
+</html>

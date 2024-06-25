@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Action Cards Example</title>
+    <style>
+      .action-card {
+        font-size: 2em;
+        width: 500px;
+        padding: 30px;
+        margin: 30px;
+        border: 3px dashed #666;
+        background-color: #c0f0f0;
+      }
+
+      .action-card .title {
+        font-size: 1.2em;
+      }
+
+      .action-card .explanation {
+      }
+
+      .action-card .image {
+        text-align: right;
+      }
+
+      .action-card img {
+        width: 100px;
+        height: 100px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Adding Images</h2>
+      <p>Notice how the second card has an image inside of a `div`. The CSS around the `img` tag is used to control the size of the image, while CSS around the `div` with 'image' class is used to control the alignment of the image, in this example.</p>
+
+      <div class="action-card">
+        <div class="title">ACTION CARD 1: Advance to Go</div>
+        <div class="explanation">Collect $200 as you pass GO.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="title">ACTION CARD 2: Pay Hospital Fees</div>
+        <div class="explanation">Pay $100.</div>
+        <div class="image"><img src="images/hospital_icon.png" /></div>
+      </div>
+
+      <div class="action-card">
+        <div class="title">ACTION CARD 3: Get Out of Jail Free</div>
+        <div class="explanation">
+          This card may be kept until needed, or sold/traded.
+        </div>
+      </div>
+
+      <div class="action-card">
+        <div class="title">ACTION CARD 4: Bank Error in Your Favor</div>
+        <div class="explanation">Collect $200.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="title">ACTION CARD 5: Go to Jail</div>
+        <div class="explanation">
+          Go directly to Jail. Do not pass GO, do not collect $200.
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

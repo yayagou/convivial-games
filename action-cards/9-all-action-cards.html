@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+NG+Modern:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <title>Action Cards Example</title>
+    <style>
+      .open-sans-300 {
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+      .action-card {
+        font-size: 2em;
+        width: 500px;
+        padding: 30px;
+        margin: 30px;
+        border: 3px dashed #666;
+        background-color: #c0f0f0;
+      }
+
+      .action-card .title {
+        font-size: 1.2em;
+        font-family: "Playwrite NG Modern", cursive;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      #action-card-2, #action-card-5 {
+        background-color: #f0c0c0;
+      }
+    </style>
+  </head>
+  <body class="open-sans-300">
+    <div class="container">
+      <h2>All Action Cards</h2>
+      <p>Here are all of the action cards. Notice that, with the 'id' attribute, it's possible to single out only specific items for CSS styling.</p>
+
+      <div class="action-card" id="action-card-1">
+        <div class="title">ACTION CARD 1: Advance to Go</div>
+        <div class="explanation">Collect $200 as you pass GO.</div>
+      </div>
+
+      <div class="action-card" id="action-card-2">
+        <div class="title">ACTION CARD 2: Pay Hospital Fees</div>
+        <div class="explanation">Pay $100.</div>
+      </div>
+
+      <div class="action-card" id="action-card-3">
+        <div class="title">ACTION CARD 3: Get Out of Jail Free</div>
+        <div class="explanation">
+          This card may be kept until needed, or sold/traded.
+        </div>
+      </div>
+
+      <div class="action-card" id="action-card-4">
+        <div class="title">ACTION CARD 4: Bank Error in Your Favor</div>
+        <div class="explanation">Collect $200.</div>
+      </div>
+
+      <div class="action-card" id="action-card-5">
+        <div class="title">ACTION CARD 5: Go to Jail</div>
+        <div class="explanation">
+          Go directly to Jail. Do not pass GO, do not collect $200.
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
