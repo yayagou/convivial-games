@@ -8,11 +8,10 @@ body {
 }
 
 #bodycontainer {
-	max-width: 500px;
+	max-width: 600px;
 	height: 100%;
 	min-height: 100vh;
   margin: 50px auto;
-	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
@@ -23,24 +22,43 @@ body {
 }
 
 
-.frme {
+.classheader {
     text-align: center;
-    font-size: 1.2em;
 }
+
+.classheader .title {
+  font-size: 2.2em;
+  font-weight: bold;
+}
+
 
 .classinfo {
   text-align: center;
   font-size: 0.8em;
+  margin: 20px 0px 40px 0px;
+}
+
+.images {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.images img {
+  max-width: 45%;
 }
 
 .images-caption {
   font-style: italic;
+  text-align: center;
+  margin: 20px;
 }
 
 .rounded-rectangle {
   border: 1px dashed black;
   padding: 40px;
-  border-radius: 100px;
+  border-radius: 70px;
+  text-align: center;
 }
 
 .description {
