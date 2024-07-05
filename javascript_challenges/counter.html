@@ -32,15 +32,18 @@
         // this adds 1 to the counterValue, then updates the counter
         function increment() {
             counterValue++;
+            if(counterValue >= 10) {
+      alert("Counter is larger or equal than 10!");
+    }
             updateCounter();
         }
-
+    
         // this subtracts 1 to the counterValue, then updates the counter
         function decrement() {
-            counterValue++;
+            counterValue--;
             updateCounter();
         }
-
+  
         // when we first run the code, update the counter display (so that it is shown as 0)
         updateCounter();
         
