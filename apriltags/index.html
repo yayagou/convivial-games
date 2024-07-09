@@ -24,21 +24,68 @@
 <script src="apriltagjs/start_video.js" async></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.1.0/math.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
-<script src="apriltagjs/on_tag_logic.js"</script>
+<script type="module" src="apriltagjs/video_process.js" async></script>
 
     <script>
+const visibleTags = new Set();
+const debounceTimers = {};
+
+const debounceTime = 300; // Adjust debounce time as needed
+
+function onTagVisible(tag) {
+    console.log(`Tag ${tag.id} became visible`);
+    // Add your logic here for when a tag becomes visible
+}
+
+function onTagHidden(tag) {
+    console.log(`Tag ${tag.id} became hidden`);
+    // Add your logic here for when a tag becomes hidden
+}
+
+function updateTags(newTags) {
+    const newTagIds = new Set(newTags.map(tag => tag.id));
+
+    // Check currently visible tags to see if any have disappeared
+    visibleTags.forEach(id => {
+        if (!newTagIds.has(id)) {
+            //  previously visible but not currently visible!
+            if (!debounceTimers[id]) {
+                debounceTimers[id] = setTimeout(() => {
+                    visibleTags.delete(id);
+                    onTagHidden({ id });
+                    delete debounceTimers[id];
+                }, debounceTime);
+            }
+        }
+    });
+
+    // Check new tags to see if any are newly visible
+    newTags.forEach(tag => {
+        if (!visibleTags.has(tag.id)) {
+            // new tag, but wasn't previously visible, so let's just show!
+            visibleTags.add(tag.id);
+            onTagVisible(tag);
+            // let's clear and delete any hide debounce timers
+            if (debounceTimers[tag.id]) {
+                clearTimeout(debounceTimers[tag.id]);
+                delete debounceTimers[tag.id];
+            }
+        } else {
+            if (debounceTimers[tag.id]) {
+                clearTimeout(debounceTimers[tag.id]);
+                delete debounceTimers[tag.id];
+            }
+        }
+    });
+}
 
 
        
-
-function processDetections(newTags) {
-    console.log(newTags);
-
-    //tagManager.updateTags(newTags);
+function processDetections(dets) {
+    updateTags(dets);
 }
 
     </script>
-<script type="module" src="apriltagjs/video_process.js" async></script>
 
 </body>
 </html>
