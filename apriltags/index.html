@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <base target="_blank">
 
-    <title>Apriltag Detector Example Canvas</title>
+    <title>Apriltag Example </title>
 
     <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="main.css">
@@ -14,78 +14,85 @@
 
 <body>
 
+    <h1>AprilTag Example</h1>
+
+    <p>To use video with LiveServer, you may need to go to `chrome://flags/#unsafely-treat-insecure-origin-as-secure` in your Chrome browser and enter in `http://127.0.0.1`. This is the IP address of our own computer. Webcams are only enabled on secure servers (HTTPS vs HTTP); for local testing on our computers, this setting allows an exception.</p>
+
+    <p>Use an AprilTag from here: <a href="https://github.com/arenaxr/apriltag-gen/tree/master/output">https://github.com/arenaxr/apriltag-gen/tree/master/output</a> -- specifically, <a href="https://github.com/arenaxr/apriltag-gen/blob/master/output/tag36_11_00103.pdf">Tag 103</a>.
+        Check the console to see if it can trigger! 
+    </p>
+
 <div id="container">
 
-    <video id="webcam_canvas" playsinline autoplay style="display:none"></video>
-    <canvas id="out_canvas"></canvas>
 
 </div>
 
+<button
+<div id="webcam-container">
+    <video id="webcam_canvas" playsinline autoplay style="display:none"></video>
+    <canvas id="out_canvas"></canvas>
+</div>
+
 <script src="apriltagjs/start_video.js" async></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.1.0/math.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+<script src="apriltagjs/on_tag_logic.js"></script>
 <script type="module" src="apriltagjs/video_process.js" async></script>
 
-    <script>
-const visibleTags = new Set();
-const debounceTimers = {};
+<script>
 
-const debounceTime = 300; // Adjust debounce time as needed
+// create a tagManager
+const tagManager = new TagManager();
 
-function onTagVisible(tag) {
-    console.log(`Tag ${tag.id} became visible`);
-    // Add your logic here for when a tag becomes visible
+//////////////////
+/// CHANGE CODE BELOW
+//////////////////
+//////////////////
+//////////////////
+//////////////////
+//////////////////
+
+
+
+
+
+
+
+//make an new tag
+var tag103 = new Tag(103);
+
+// do stuff when it's visible
+tag103.onShow(() => {
+    console.log(`Tag ${tag103.id} is now visible`);
+});
+
+// do stuff when it's hidden
+tag103.onHide(() => {
+    console.log(`Tag ${tag103.id} is now hidden`);
+});
+
+// add this tag to the system that manages all tags
+tagManager.addTag(tag103);
+
+
+
+
+
+
+
+
+//////////////////
+//////////////////
+//////////////////
+//////////////////
+///CHANGE CODE ABOVE
+//////////////////
+
+function processDetections(tags) {
+    tagManager.updateTags(tags);
 }
 
-function onTagHidden(tag) {
-    console.log(`Tag ${tag.id} became hidden`);
-    // Add your logic here for when a tag becomes hidden
-}
-
-function updateTags(newTags) {
-    const newTagIds = new Set(newTags.map(tag => tag.id));
-
-    // Check currently visible tags to see if any have disappeared
-    visibleTags.forEach(id => {
-        if (!newTagIds.has(id)) {
-            //  previously visible but not currently visible!
-            if (!debounceTimers[id]) {
-                debounceTimers[id] = setTimeout(() => {
-                    visibleTags.delete(id);
-                    onTagHidden({ id });
-                    delete debounceTimers[id];
-                }, debounceTime);
-            }
-        }
-    });
-
-    // Check new tags to see if any are newly visible
-    newTags.forEach(tag => {
-        if (!visibleTags.has(tag.id)) {
-            // new tag, but wasn't previously visible, so let's just show!
-            visibleTags.add(tag.id);
-            onTagVisible(tag);
-            // let's clear and delete any hide debounce timers
-            if (debounceTimers[tag.id]) {
-                clearTimeout(debounceTimers[tag.id]);
-                delete debounceTimers[tag.id];
-            }
-        } else {
-            if (debounceTimers[tag.id]) {
-                clearTimeout(debounceTimers[tag.id]);
-                delete debounceTimers[tag.id];
-            }
-        }
-    });
-}
 
 
-       
-function processDetections(dets) {
-    updateTags(dets);
-}
-
-    </script>
+</script>
 
 </body>
 </html>
