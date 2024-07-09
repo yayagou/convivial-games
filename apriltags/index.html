@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <base target="_blank">
+
+    <title>Apriltag Detector Example Canvas</title>
+
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+<div id="container">
+
+    <video id="webcam_canvas" playsinline autoplay style="display:none"></video>
+    <canvas id="out_canvas"></canvas>
+
+</div>
+
+<script src="apriltagjs/start_video.js" async></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.1.0/math.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+<script src="apriltagjs/on_tag_logic.js"</script>
+
+    <script>
+
+
+       
+
+function processDetections(newTags) {
+    console.log(newTags);
+
+    //tagManager.updateTags(newTags);
+}
+
+    </script>
+<script type="module" src="apriltagjs/video_process.js" async></script>
+
+</body>
+</html>
