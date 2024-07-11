@@ -1,0 +1,8 @@
+.hint { 
+  background-color: black;
+}
+
+.hint:hover { 
+  background-color: yellow;
+}
+

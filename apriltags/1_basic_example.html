@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <base target="_blank">
+
+    <title>Apriltag Example </title>
+
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+
+    <h1>AprilTag Example</h1>
+
+    <p>This is a basic AprilTag example! Extend this to allow fiducial markers to trigger functions in Javascript!</p>
+
+    <h3>1. Webcam</h3>
+
+    <p>If the webcam doesn't show below, it's because webcams are only enabled on secure servers (HTTPS vs HTTP); for local testing on our computers, we need to create an exception.
+        <li>To use video with LiveServer, you will need to use Chrome.</li>
+        <li>In Chrome, go to `chrome://flags/#unsafely-treat-insecure-origin-as-secure` in your Chrome browser and enter in `http://127.0.0.1`, and click 'Enabled'. 
+            (127.0.0.1 is the IP address of our own computer; this enables Chrome to treat websites hosted by our own computers as exceptions to the rule that accessing webcam feeds are only enabled on secure servers.)</li>
+    </p>
+
+    <h3>2. Apriltag</h3>
+
+    <p>Print or load on your phone an AprilTag from here: <a href="https://github.com/arenaxr/apriltag-gen/tree/master/output">https://github.com/arenaxr/apriltag-gen/tree/master/output</a> -- specifically, <a href="https://github.com/arenaxr/apriltag-gen/blob/master/output/tag36_11_00103.pdf">Tag 103</a>.</p>
+    <p>
+        Check the console to see if you get any messages!
+    </p>
+
+    <h3>Challenge 1:</h3>
+    <p>Choose a new tag and note its ID. Copy paste lines 73 to 90 in this file, in the javascript, to trigger an alert message with <code>alert("hello world")</code></p>
+    <p>Hint 1: <span class="hint">What triggers the console.log message? Could you insert the 'alert' code there instead?</span></p>
+
+    <h3>Challenge 2:</h3>
+    <p>Choose another tag and note its ID. Using the following syntax, change the CSS properties of an HTML element. 
+    </p>
+    <p>Hint 1: <span class="hint">Check out #13 in 'javascript challenges'</span></p>
+    <p>Hint 2: <span class="hint">Try <code>document.getElementById('body').style.setProperty('background-color', 'light-blue');</code></span></p>
+<div id="container">
+
+
+
+</div>
+
+<div id="webcam-container">
+    <video id="webcam_canvas" playsinline autoplay style="display:none"></video>
+    <canvas id="out_canvas"></canvas>
+</div>
+
+<script src="apriltagjs/start_video.js" async></script>
+<script src="apriltagjs/on_tag_logic.js"></script>
+<script type="module" src="apriltagjs/video_process.js" async></script>
+
+<script>
+
+// create a tagManager
+const tagManager = new TagManager();
+
+//////////////////
+/// CHANGE CODE BELOW
+//////////////////
+//////////////////
+//////////////////
+//////////////////
+//////////////////
+
+
+
+
+
+
+
+//make an new tag
+var tag103 = new Tag(103);
+
+// do stuff when it's visible
+tag103.onShow(() => {
+    console.log("Tag 103 is now visible!");
+});
+
+// do stuff when it's hidden
+tag103.onHide(() => {
+    console.log("Tag 103 is now hidden!!");
+});
+
+// add this tag to the system that manages all tags
+tagManager.addTag(tag103);
+
+
+
+
+
+
+
+
+//////////////////
+//////////////////
+//////////////////
+//////////////////
+///CHANGE CODE ABOVE
+//////////////////
+
+function processDetections(tags) {
+    tagManager.updateTags(tags);
+}
+
+
+
+</script>
+
+</body>
+</html>
