@@ -41,7 +41,14 @@
 
   <h3>AprilTag Map</h3>
 
+  <p>This is a working example using AprilTag to hide/show map overlays! This is a variant of the 'map.html' file in the 'javascript challenges' folder.</p>
+  <p>Click on the 'Toggle Webcam' button to hide/show the webcam for testing purposes.</p>
 
+    <h3>Challenge 1:</h3>
+    <p>Add two more tags in order to activate/disable all four map layers.</p>
+
+    <h3>Challenge 2:</h3>
+    <p>See if you can change the behavior of the tags so that when tags are NOT VISIBLE, the map layers appear.</p>
 
   <div class="images">
     <img id="map_underlay" src="images/map_underlay.png" />
@@ -100,16 +107,19 @@ var tag103 = new Tag(103);
 
 // do stuff when it's visible
 tag103.onShow(() => {
+
     var img = document.getElementById("map_underlay");
-    console.log(`Tag ${tag103.id} is now visible`);
-    img.style.opacity = 0.8;
+    img.style.setProperty("opacity", 0.8);
+
+    console.log("Tag 103 is now visible");
 });
 
 // do stuff when it's hidden
 tag103.onHide(() => {
     var img = document.getElementById("map_underlay");
-    console.log(`Tag ${tag103.id} is now hidden`);
-    img.style.opacity = 0;
+    img.style.setProperty("opacity", 0);
+
+    console.log("Tag 103 is now hidden");
 });
 
 // add this tag to the system that manages all tags
@@ -125,15 +135,17 @@ var tag101 = new Tag(101);
 // do stuff when it's visible
 tag101.onShow(() => {
     var img = document.getElementById("map_racial");
-    console.log(`Tag ${tag101.id} is now visible`);
-    img.style.opacity = 0.8;
+    img.style.setProperty("opacity", 0.9);
+
+    console.log("Tag 101 is now visible");
 });
 
 // do stuff when it's hidden
 tag101.onHide(() => {
     var img = document.getElementById("map_racial");
-    console.log(`Tag ${tag101.id} is now hidden`);
-    img.style.opacity = 0;
+    img.style.setProperty("opacity", 0);
+
+    console.log("Tag 101 is now hidden");
 });
 
 // add this tag to the system that manages all tags
