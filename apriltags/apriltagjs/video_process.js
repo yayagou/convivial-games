@@ -1,6 +1,4 @@
-import * as Comlink from "https://unpkg.com/comlink/dist/esm/comlink.mjs";
-//import "https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.1.0/math.min.js";
-
+import * as Comlink from "./comlink.mjs";
 import * as Base64 from "./base64.js";
 
 var detections=[];
